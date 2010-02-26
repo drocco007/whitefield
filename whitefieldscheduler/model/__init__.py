@@ -77,6 +77,26 @@ schedule = {
          ("1:05-2:00", 4),
          ("2:05-3:00", 5),
          ],
+    "Late": [("8:45-9:10", "Extra Help"), 
+         ("9:10-9:25", "Advisee"),
+         ("9:30-10:15", 0),
+         ("10:20-11:05", 1),
+         ("11:10-11:55", 2),
+         ("12:00-12:45", 3),
+         ("12:50-1:20", "Lunch"),
+         ("1:25-2:10", 4),
+         ("2:15-3:00", 5),
+         ],
+    "Chapel": [("7:45-8:10", "Extra Help"), 
+         ("8:10-8:55", 0),
+         ("9:00-10:15", "Chapel/Advisee"),
+         ("10:20-11:05", 1),
+         ("11:10-11:55", 2),
+         ("12:00-12:45", 3),
+         ("12:50-1:20", "Lunch"),
+         ("1:25-2:10", 4),
+         ("2:15-3:00", 5),
+         ],
 }
 
 class DaySchedule(object):
@@ -122,4 +142,10 @@ def _test(_verbose=False):
 # test stub: run doctests if this file is run directly
 
 if __name__ == "__main__":
-    _test(True)
+    _test()
+
+    print DaySchedule("8/19/2009").schedule
+    print
+    print DaySchedule("8/20/2009").schedule
+    print
+    print DaySchedule("8/21/2009").schedule
