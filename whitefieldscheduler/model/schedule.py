@@ -49,14 +49,11 @@ class DaySchedule(object):
     def __init__(self, _date):
         self.date = parse_date(_date)
         self.day_code, self.modifier = day_code[self.date]
-        self.periods = day_periods[self.day_code]
-        self._schedule = schedule[self.modifier]
-        self.day = days[self.date.weekday()]
+        
         self.period_times = {}
-
-    @property
-    def schedule(self):
-         return map(self._label, self._schedule)
+        self.periods = day_periods[self.day_code]
+        self.schedule = map(self._label, schedule[self.modifier])
+        self.day = days[self.date.weekday()]
 
     def _label(self, period):
         if isinstance(period[1], int):
