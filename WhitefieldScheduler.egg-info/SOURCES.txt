@@ -22,8 +22,10 @@ whitefieldscheduler/controllers/error.py
 whitefieldscheduler/lib/__init__.py
 whitefieldscheduler/lib/app_globals.py
 whitefieldscheduler/lib/base.py
+whitefieldscheduler/lib/date_parser.py
 whitefieldscheduler/lib/helpers.py
 whitefieldscheduler/model/__init__.py
+whitefieldscheduler/model/schedule.py
 whitefieldscheduler/public/bg.png
 whitefieldscheduler/public/favicon.ico
 whitefieldscheduler/public/index.html
