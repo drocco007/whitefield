@@ -140,8 +140,18 @@ class DaySchedule(object):
     'Monday'
     >>> schedule.day_code
     'A'
-    >>> schedule.schedule[2][1]
-    '1'
+
+    To get the entire schedule, use the schedule property
+    
+    >>> schedule.schedule[1]
+    ('8:10-8:25', 'Advisee')
+
+    To find the time of a particular period
+    
+    >>> schedule['3']
+    '10:30-11:25'
+    >>> schedule['Lunch']
+    '12:30-1:00'
     """
     def __init__(self, _date):
         self.date = parse_date(_date)
@@ -149,6 +159,7 @@ class DaySchedule(object):
         self.periods = day_periods[self.day_code]
         self._schedule = schedule[self.modifier]
         self.day = days[self.date.weekday()]
+        self.period_times = {}
 
     @property
     def schedule(self):
@@ -158,6 +169,7 @@ class DaySchedule(object):
         if isinstance(period[1], int):
             period = (period[0], str(self.periods[period[1]]))
 
+        self.period_times[period[1]] = period[0]
         return period
 
     def __str__(self):
@@ -168,6 +180,8 @@ class DaySchedule(object):
             "schedule": self.schedule,
             })
 
+    def __getitem__(self, key):
+        return self.period_times[key]
 
 # ====================================================================
 # doctest test harness
