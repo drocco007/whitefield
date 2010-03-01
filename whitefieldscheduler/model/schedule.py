@@ -12,13 +12,12 @@ strings
 True
 
 
-Â© 2008 Daniel J. Rocco
+© 2008 Daniel J. Rocco
 Licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License
 http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 
 """
 
-from datetime import date
 from whitefieldscheduler.lib.date_parser import parse_date
 from whitefieldscheduler.model import day_code, day_periods, schedule
 
