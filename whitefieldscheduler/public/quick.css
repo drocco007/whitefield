@@ -1,0 +1,57 @@
+body {
+    background-color: #888;
+    margin: 25px;
+}
+
+div.content {
+
+}
+
+#schedule {
+    border-collapse: collapse;
+    background-color: #8090a5;
+    width: 300px;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 1.5em;
+} 
+
+#schedule th, #schedule td {
+    border: thin solid #99c;
+    padding:3px 7px 2px 7px;
+}
+
+#schedule th {
+    background-color: #a0b0c7;
+    font-size:1.7em;
+    text-align:left;
+    padding-top:5px;
+    padding-bottom:4px;
+    color:#ffffff;
+}
+
+#schedule tr.even td {
+    background-color: #90a0b6;
+}
+
+h1.main {
+    width: 100%;
+    text-size: 2em;
+}
+
+p.footer{
+    width: 100%;
+    padding-top: 8px;
+    border-top: 1px solid #000;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+div#flash .message {
+    color: orangered;
+}

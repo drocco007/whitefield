@@ -18,6 +18,7 @@ http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 
 """
 
+
 from whitefieldscheduler.lib.date_parser import parse_date
 from whitefieldscheduler.model import day_code, day_periods, schedule
 
@@ -92,3 +93,6 @@ if __name__ == "__main__":
     print DaySchedule("August 20, 2009")
     print
     print DaySchedule("8/21/2009")
+    print
+    print DaySchedule("September 1, 2009")
+

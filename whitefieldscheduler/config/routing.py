@@ -20,7 +20,8 @@ def make_map():
 
     # CUSTOM ROUTES HERE
 
-    map.connect('/{controller}/{action}')
-    map.connect('/{controller}/{action}/{id}')
+    map.connect("schedule", "/schedule/{title}", controller="day", action="json")
+
+    map.connect("schedule", "/{title}", controller="day", action="show")
 
     return map
