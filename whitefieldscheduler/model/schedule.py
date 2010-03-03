@@ -55,6 +55,12 @@ class DaySchedule(object):
         self.schedule = map(self._label, schedule[self.modifier])
         self.day = days[self.date.weekday()]
 
+    @property
+    def day_type(self):
+        """Describes the day, e.g. "B", "Late G", "Arts", etc."""
+
+        return " ".join( (self.modifier, self.day_code) ).strip()
+
     def _label(self, period):
         if isinstance(period[1], int):
             period = (period[0], str(self.periods[period[1]]))
@@ -66,6 +72,7 @@ class DaySchedule(object):
         return str({
             "date": str(self.date),
             "day_code": self.day_code,
+            "day_type": self.day_type,
             "day": self.day,
             "schedule": self.schedule,
             })

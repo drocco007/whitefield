@@ -1,6 +1,6 @@
 <%inherit file="/base.mako"/>\
 
-<%def name="header()">${c.title}&mdash;${c.schedule.day_code}</%def>
+<%def name="header()">${c.title}&mdash;${c.schedule.day_type}</%def>
 
 <table id="schedule">
    <tr>
