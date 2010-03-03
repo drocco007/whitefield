@@ -32,7 +32,17 @@ def parse_date(_date):
     Traceback (most recent call last):
     ...
     ValueError: Couldn't parse the date from: python rocks!
+    >>> str(parse_date("2009-08-31"))
+    '2009-08-31'
     """
+    # bizarre omission: parsedatetime doesn't handle the default string
+    # format returned by datetime.date objects!  Special case…
+    try:
+        year, month, day = map(int, _date.split("-"))
+        return date(year,  month,  day)
+    except:
+         pass
+
     date_struct, parse_code = _date_parser.parse(_date)
 
     if parse_code == 0:

@@ -18,11 +18,13 @@ http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 
 """
 
+from datetime import timedelta
 
 from whitefieldscheduler.lib.date_parser import parse_date
 from whitefieldscheduler.model import day_code, day_periods, schedule
 
-days = "Monday Tuesday Wednesday Thursday Friday Saturday Sunday".split()
+DAYS = "Monday Tuesday Wednesday Thursday Friday Saturday Sunday".split()
+ONE_DAY = timedelta(days=1)
 
 
 class DaySchedule(object):
@@ -33,11 +35,15 @@ class DaySchedule(object):
     'Monday'
     >>> schedule.day_code
     'A'
+    >>> schedule.day_type
+    'A'
+    
 
     To get the entire schedule, use the schedule property
     
     >>> schedule.schedule[1]
     ('8:10-8:25', 'Advisee')
+
 
     To find the time of a particular period
     
@@ -45,6 +51,14 @@ class DaySchedule(object):
     '10:30-11:25'
     >>> schedule['Lunch']
     '12:30-1:00'
+
+
+    You can also retrieve the day before or after this schedule's date
+
+    >>> schedule.day_before
+    datetime.date(2009, 8, 30)
+    >>> schedule.day_after
+    datetime.date(2009, 9, 1)
     """
     def __init__(self, _date):
         self.date = parse_date(_date)
@@ -53,13 +67,25 @@ class DaySchedule(object):
         self.period_times = {}
         self.periods = day_periods[self.day_code]
         self.schedule = map(self._label, schedule[self.modifier])
-        self.day = days[self.date.weekday()]
+        self.day = DAYS[self.date.weekday()]
 
     @property
     def day_type(self):
         """Describes the day, e.g. "B", "Late G", "Arts", etc."""
 
         return " ".join( (self.modifier, self.day_code) ).strip()
+
+    @property
+    def day_before(self):
+        """Return the date before this date."""
+
+        return self.date - ONE_DAY
+        
+    @property
+    def day_after(self):
+        """Return the date after this date."""
+
+        return self.date + ONE_DAY
 
     def _label(self, period):
         if isinstance(period[1], int):

@@ -10,9 +10,10 @@ div.content {
 #schedule {
     border-collapse: collapse;
     background-color: #8090a5;
-    width: 300px;
     font-family: Verdana, Helvetica, Arial, sans-serif;
     font-size: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
 } 
 
 #schedule th, #schedule td {
@@ -32,6 +33,28 @@ div.content {
 #schedule tr.even td {
     background-color: #90a0b6;
 }
+
+#schedule-container {
+    position: relative;
+    width: 40em;
+} 
+
+#previous, #next {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 1.2em;
+}
+
+#previous {
+    position: absolute;
+    top: 0;
+    left: 0;
+} 
+
+#next {   
+    position: absolute;
+    top: 0;
+    right: 0;
+} 
 
 h1.main {
     width: 100%;
