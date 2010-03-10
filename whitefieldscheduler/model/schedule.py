@@ -106,6 +106,18 @@ class DaySchedule(object):
             })
 
     def __getitem__(self, key):
+        """Return the time slot for a given period.
+
+        >>> schedule = DaySchedule("8/27/2009")
+        >>> schedule['Lunch']
+        '12:50-1:20'
+        >>> schedule['2']
+        '2 not in schedule'
+        """
+
+        if key not in self.period_times.keys():
+            return key + ' not in schedule'
+        
         return self.period_times[key]
 
 # ====================================================================
@@ -123,11 +135,12 @@ def _test(_verbose=False):
 if __name__ == "__main__":
     _test()
 
-    print DaySchedule("8/19/2009")
-    print
-    print DaySchedule("August 20, 2009")
-    print
-    print DaySchedule("8/21/2009")
-    print
-    print DaySchedule("September 1, 2009")
+    ## print DaySchedule("8/19/2009")
+    ## print
+    ## print DaySchedule("August 20, 2009")
+    ## print
+    ## print DaySchedule("8/21/2009")
+    ## print
+    ## print DaySchedule("September 1, 2009")
+    ## print DaySchedule("8/27/2009")
 
