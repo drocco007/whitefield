@@ -23,7 +23,6 @@ from datetime import timedelta
 from whitefieldscheduler.lib.date_parser import parse_date
 from whitefieldscheduler.model import day_code, day_periods, schedule
 
-DAYS = "Monday Tuesday Wednesday Thursday Friday Saturday Sunday".split()
 ONE_DAY = timedelta(days=1)
 
 
@@ -67,8 +66,11 @@ class DaySchedule(object):
         self.period_times = {}
         self.periods = day_periods[self.day_code]
         self.schedule = map(self._label, schedule[self.modifier])
-        self.day = DAYS[self.date.weekday()]
 
+    @property
+    def day(self):
+        return self.date.strftime("%A")
+    
     @property
     def day_type(self):
         """Describes the day, e.g. "B", "Late G", "Arts", etc."""
