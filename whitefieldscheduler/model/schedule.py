@@ -12,7 +12,7 @@ strings
 True
 
 
-© 2008 Daniel J. Rocco
+Â© 2008 Daniel J. Rocco
 Licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License
 http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 
@@ -44,7 +44,7 @@ class DaySchedule(object):
     ('8:10-8:25', 'Advisee')
 
 
-    To find the time of a particular period
+tf    To find the time of a particular period
     
     >>> schedule['3']
     '10:30-11:25'
@@ -66,6 +66,10 @@ class DaySchedule(object):
         self.period_times = {}
         self.periods = day_periods[self.day_code]
         self.schedule = map(self._label, schedule[self.modifier])
+
+    @property
+    def date_str(self):
+        return self.date.strftime("%A %B %d, %Y")
 
     @property
     def day(self):
@@ -97,13 +101,7 @@ class DaySchedule(object):
         return period
 
     def __str__(self):
-        return str({
-            "date": str(self.date),
-            "day_code": self.day_code,
-            "day_type": self.day_type,
-            "day": self.day,
-            "schedule": self.schedule,
-            })
+        return self.date_str + "-" + self.day_type
 
     def __getitem__(self, key):
         """Return the time slot for a given period.
