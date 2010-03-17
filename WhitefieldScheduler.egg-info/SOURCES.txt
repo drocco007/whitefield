@@ -18,6 +18,7 @@ whitefieldscheduler/config/environment.py
 whitefieldscheduler/config/middleware.py
 whitefieldscheduler/config/routing.py
 whitefieldscheduler/controllers/__init__.py
+whitefieldscheduler/controllers/day.py
 whitefieldscheduler/controllers/error.py
 whitefieldscheduler/lib/__init__.py
 whitefieldscheduler/lib/app_globals.py
@@ -28,8 +29,15 @@ whitefieldscheduler/model/__init__.py
 whitefieldscheduler/model/schedule.py
 whitefieldscheduler/public/bg.png
 whitefieldscheduler/public/favicon.ico
-whitefieldscheduler/public/index.html
 whitefieldscheduler/public/pylons-logo.gif
+whitefieldscheduler/public/quick.css
+whitefieldscheduler/templates/base.mako
+whitefieldscheduler/templates/base.mako~
+whitefieldscheduler/templates/pages/edit.mako
+whitefieldscheduler/templates/pages/index.mako
+whitefieldscheduler/templates/pages/new.mako
+whitefieldscheduler/templates/pages/show.mako
+whitefieldscheduler/templates/pages/show.mako~
 whitefieldscheduler/tests/__init__.py
 whitefieldscheduler/tests/test_models.py
 whitefieldscheduler/tests/functional/__init__.py

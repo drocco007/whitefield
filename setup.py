@@ -7,10 +7,10 @@ except ImportError:
 
 setup(
     name='WhitefieldScheduler',
-    version='0.1',
-    description='',
-    author='',
-    author_email='',
+    version='0.2',
+    description='Whitefield class schedule application',
+    author='Daniel J. Rocco',
+    author_email='drocco@gmail.com',
     url='',
     install_requires=[
         "Pylons>=0.9.7",
