@@ -44,7 +44,7 @@ class DaySchedule(object):
     ('8:10-8:25', 'Advisee')
 
 
-tf    To find the time of a particular period
+    To find the time of a particular period
     
     >>> schedule['3']
     '10:30-11:25'
@@ -61,15 +61,22 @@ tf    To find the time of a particular period
     """
     def __init__(self, _date):
         self.date = parse_date(_date)
-        self.day_code, self.modifier = day_code[self.date]
-        
         self.period_times = {}
-        self.periods = day_periods[self.day_code]
-        self.schedule = map(self._label, schedule[self.modifier])
+        self.day_code = self.modifier = ""
+        self.periods = self.schedule = None
+        
+        if not self.date in day_code:
+            return
+        
+        self.day_code, self.modifier = day_code[self.date]
+            
+        if self.day_code in day_periods:
+            self.periods = day_periods[self.day_code]
+            self.schedule = map(self._label, schedule[self.modifier])
 
     @property
     def date_str(self):
-        return self.date.strftime("%A %B %d, %Y")
+        return self.date.strftime("%A %B %%s, %Y") % str(self.date.day)
 
     @property
     def day(self):
@@ -101,7 +108,10 @@ tf    To find the time of a particular period
         return period
 
     def __str__(self):
-        return self.date_str + "-" + self.day_type
+        if not self.day_type:
+            return self.date_str
+        
+        return "-".join( (self.date_str, self.day_type) )
 
     def __getitem__(self, key):
         """Return the time slot for a given period.
@@ -140,5 +150,11 @@ if __name__ == "__main__":
     ## print DaySchedule("8/21/2009")
     ## print
     ## print DaySchedule("September 1, 2009")
-    ## print DaySchedule("8/27/2009")
+    print DaySchedule("8/27/2009")
+    print DaySchedule("8/29/2009")
+    print DaySchedule("4/30/2010")
+    print DaySchedule("5/1/2010")
+    print DaySchedule("5/2/2010")
+    print DaySchedule("5/3/2010")
+    print DaySchedule("5/21/2010")
 
