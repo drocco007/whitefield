@@ -10,7 +10,7 @@
 % if c.schedule.day_type:
 &mdash;${c.schedule.day_type}\
 %endif
-</th>
+&nbsp;<img src="calendar.gif" /></th>
     </tr>
     
 % if c.schedule.schedule:
@@ -33,6 +33,8 @@
 </table>
 
 <p id="next"><a href="${c.schedule.day_after}">${c.schedule.day_after}</a></p>
+
+<div id="calendar"></div>
 </div>
 
 <%def name="flip_class(flip)">\

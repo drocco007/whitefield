@@ -61,6 +61,12 @@ div.content {
     width: 40em;
 } 
 
+#calendar {
+    position: absolute;
+    top: 0;
+    right: 0;
+} 
+
 #previous, #next {
     font-family: Verdana, Helvetica, Arial, sans-serif;
     font-size: 1.2em;
