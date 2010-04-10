@@ -12,7 +12,7 @@ strings
 True
 
 
-Â© 2008 Daniel J. Rocco
+© 2008 Daniel J. Rocco
 Licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License
 http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 
@@ -78,6 +78,10 @@ class DaySchedule(object):
     def date_str(self):
         return self.date.strftime("%A %B %%s, %Y") % str(self.date.day)
 
+    @property
+    def short_date_str(self):
+        return self.date.strftime("%a %B %%s") % str(self.date.day)
+    
     @property
     def day(self):
         return self.date.strftime("%A")

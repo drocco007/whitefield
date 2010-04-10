@@ -3,27 +3,42 @@ body {
     margin: 25px;
 }
 
+/*#wrapper {
+    background-color: white;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}*/
+
 div.content {
 
 }
 
 #schedule {
     border-collapse: collapse;
-    background-color: #8090a5;
+    background-color: #dfdfdf;
+    color: #3a5673;
     font-family: Verdana, Helvetica, Arial, sans-serif;
-    font-size: 1.5em;
+    font-size: 1em;
     margin-left: auto;
     margin-right: auto;
+    width: 275px;
+    height: 275px;
 } 
 
 #schedule th, #schedule td {
-    border: thin solid #99c;
     padding:3px 7px 2px 7px;
 }
 
+#schedule td {
+    border: thin solid #A0B5CA;
+}
+
 #schedule th {
-    background-color: #a0b0c7;
-    font-size:1.7em;
+    background-color: #264a62; 
+    border: thin solid #264a62;
+    border-bottom: none;
+    font-size:1.2em;
     text-align:left;
     padding-top:5px;
     padding-bottom:4px;
@@ -31,7 +46,14 @@ div.content {
 }
 
 #schedule tr.even td {
-    background-color: #90a0b6;
+    background: #f0f0f0 url(background.png) no-repeat;
+}
+
+#schedule tr.top th {
+    text-decoration: underline;
+    vertical-align: top;
+    font-size:1.2em;
+    padding-bottom: 0;
 }
 
 #schedule-container {
@@ -69,6 +91,7 @@ p.footer{
 
 a {
     text-decoration: none;
+    color: #506b89;
 }
 
 a:hover {

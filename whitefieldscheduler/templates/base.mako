@@ -7,12 +7,8 @@
   </head>
 
   <body>
-    <h1 class="main">${self.header()}</h1>
-
     <div class="content">
-
       ${next.body()}\
-
     </div>
   </body>
 </html>
