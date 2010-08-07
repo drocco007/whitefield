@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='WhitefieldScheduler',
-    version='0.3',
+    version='0.4',
     description='Whitefield class schedule application',
     author='Daniel J. Rocco',
     author_email='drocco@gmail.com',

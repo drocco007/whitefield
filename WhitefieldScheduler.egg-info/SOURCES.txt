@@ -31,6 +31,7 @@ whitefieldscheduler/public/background.png
 whitefieldscheduler/public/bg.png
 whitefieldscheduler/public/calendar.gif
 whitefieldscheduler/public/favicon.ico
+whitefieldscheduler/public/print.css
 whitefieldscheduler/public/pylons-logo.gif
 whitefieldscheduler/public/quick.css
 whitefieldscheduler/public/css/ui-lightness/jquery-ui-1.8.custom.css

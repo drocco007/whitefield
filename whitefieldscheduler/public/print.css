@@ -1,0 +1,29 @@
+body {
+    font-size: 2em;
+}
+
+#day_code {
+    font-size: 5em;
+    display: block;
+    text-align: center;
+}
+
+#previous, #next, #day_code_separator, img {
+    display: none;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+th {
+    text-align: left;
+}
+
+/*
+td, th {
+    border: thin solid black;
+}
+*/

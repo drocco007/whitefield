@@ -6,20 +6,22 @@
 <table id="schedule">
 <tbody>
     <tr class="top">
-        <th colspan="2">${c.schedule.short_date_str}\
+        <th colspan="2">
+            <span id="date">${c.schedule.short_date_str}</span>
 % if c.schedule.day_type:
-&mdash;${c.schedule.day_type}\
+            <span id="day_code_separator">&mdash;</span>
+            <span id="day_code">${c.schedule.day_type}</span>
 %endif
-&nbsp;<img src="calendar.gif" /></th>
+            &nbsp;<img src="calendar.gif" /></th>
     </tr>
-    
+
 % if c.schedule.schedule:
    <tr>
      <th>Time</th>
      <th>Period</th>
    </tr>
 
-   <% flipper = False %> 
+   <% flipper = False %>
    % for timeslot, value in c.schedule.schedule:
    <tr${self.flip_class(flipper)}>
      <% start, end = timeslot.split("-") %>\
@@ -38,8 +40,7 @@
 </div>
 
 <%def name="flip_class(flip)">\
-% if flip: 
+% if flip:
  class="even"\
 % endif
 </%def>
-
