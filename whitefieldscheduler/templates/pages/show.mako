@@ -24,8 +24,12 @@
    <% flipper = False %>
    % for timeslot, value in c.schedule.schedule:
    <tr${self.flip_class(flipper)}>
+     % if timeslot:
      <% start, end = timeslot.split("-") %>\
      <td>${start}&ndash;${end}</td>
+     % else:
+     <td>&nbsp;</td>
+     % endif
      <td>${value}</td>
    </tr>
    <% flipper = not flipper %>\
