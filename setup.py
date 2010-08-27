@@ -13,7 +13,7 @@ setup(
     author_email='drocco@gmail.com',
     url='',
     install_requires=[
-        "Pylons>=0.10",
+        "Pylons>=1.0",
         "parsedatetime>=0.8.6",
     ],
     setup_requires=["PasteScript>=1.6.3"],
