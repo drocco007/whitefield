@@ -21,7 +21,7 @@ http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 from datetime import timedelta
 
 from whitefieldscheduler.lib.date_parser import parse_date
-from whitefieldscheduler.model import day_code, day_periods, schedule
+from whitefieldscheduler.model import day_code, day_periods, schedule, specials
 
 ONE_DAY = timedelta(days=1)
 
@@ -69,8 +69,10 @@ class DaySchedule(object):
             return
         
         self.day_code, self.modifier = day_code[self.date]
-            
-        if self.day_code in day_periods:
+
+        if self.date in specials:
+            self.schedule = specials[self.date]
+        elif self.day_code in day_periods:
             self.periods = day_periods[self.day_code]
             self.schedule = map(self._label, schedule[self.modifier])
 
@@ -161,4 +163,8 @@ if __name__ == "__main__":
     print DaySchedule("5/2/2010")
     print DaySchedule("5/3/2010")
     print DaySchedule("5/21/2010")
+    print DaySchedule("12/6/2010")
+    print DaySchedule("12/6/2010").schedule
+    print DaySchedule("12/7/2010")
+    print DaySchedule("12/7/2010").schedule
 

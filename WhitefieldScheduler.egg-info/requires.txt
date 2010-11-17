@@ -1,2 +1,2 @@
-Pylons>=0.10
+Pylons>=1.0
 parsedatetime>=0.8.6
