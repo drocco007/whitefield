@@ -67,6 +67,7 @@ div.content {
     right: 0;
 } 
 
+/*
 #previous, #next {
     font-family: Verdana, Helvetica, Arial, sans-serif;
     font-size: 1.2em;
@@ -83,7 +84,7 @@ div.content {
     top: 0;
     right: 0;
 } 
-
+*/
 h1.main {
     width: 100%;
     text-size: 2em;

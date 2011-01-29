@@ -1,0 +1,254 @@
+@charset "utf-8";
+
+/*
+ * main document settings
+ */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: #FFFFFF;
+	background-image: url(../images/bg.png);
+	background-repeat: repeat-x;
+	color: #666666;
+}
+
+#wrap {
+	width: 835px;
+	margin: auto;
+}
+
+.clear {
+	clear: both;
+}
+
+h2 {
+	font-family: "normal georgia", serif;
+	font-size: 18px;
+	font-variant: small-caps;
+	color: #6E9DCD;
+}
+
+h1 {
+	font-family: "normal georgia", serif;
+	font-size: 24px;
+	font-weight:normal;
+	color: #000000;
+}
+
+/*
+ * header
+ */
+
+#wrap #header #logo {
+	display: block;
+	float: left;
+	margin-top: 30px;
+}
+
+#wrap #header {
+	height: 150px;
+}
+
+#wrap #header #navigation {
+	background-image: url(../images/menubg.png);
+	background-repeat: no-repeat;
+	float: right;
+	width: 371px;
+	margin-top: 49px;
+	height: 100px;
+	background-position: bottom;
+}
+#wrap #header #navigation ul {
+	list-style-type: none;
+	text-align: center;
+	margin: 0px;
+	padding-top: 44px;
+	font-size: 1.2em;
+	padding-left: 75px;
+}
+#wrap #header #navigation li {
+	display: inline;
+	font-variant: small-caps;
+}
+#wrap #header #navigation a {
+	display: block;
+	background-image: url(../images/menu1.png);
+	background-repeat: no-repeat;
+	height: 22px;
+	width: 120px;
+	padding-top: 5px;
+	text-align: center;
+	float: left;
+	margin-right: 2px;
+	margin-left: 1px;
+	color: #AAAAAA;
+	text-decoration: none;
+}
+
+#wrap #header #navigation a:visited, active {
+	display: block;
+	background-image: url(../images/menu1.png);
+	background-repeat: no-repeat;
+	height: 22px;
+	width: 120px;
+	padding-top: 5px;
+	text-align: center;
+	float: left;
+	margin-right: 2px;
+	margin-left: 1px;
+	color: #AAAAAA;
+	text-decoration: none;
+}
+#wrap #header #navigation a:hover {
+	display: block;
+	background-repeat: no-repeat;
+	height: 22px;
+	width: 120px;
+	padding-top: 5px;
+	text-align: center;
+	float: left;
+	margin-right: 2px;
+	margin-left: 1px;
+	color: #000000;
+	text-decoration: none;
+}
+
+#wrap #header #navigation .active a {
+	display: block;
+	background-image: url(../images/menu2.png);
+	background-repeat: no-repeat;
+	height: 22px;
+	width: 120px;
+	padding-top: 5px;
+	text-align: center;
+	float: left;
+	margin-right: 2px;
+	margin-left: 1px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+#wrap #header #navigation .active a:visited, active {
+	display: block;
+	background-image: url(../images/menu2.png);
+	background-repeat: no-repeat;
+	height: 22px;
+	width: 120px;
+	padding-top: 5px;
+	text-align: center;
+	float: left;
+	margin-right: 2px;
+	margin-left: 1px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#wrap #header #sitename {
+	display: block;
+	float: left;
+	font-size: 25px;
+	padding-top: 50px;
+}
+
+#wrap #header #sitename .logosmall {
+	font-size: 14px;
+	text-align: center;
+	padding: 3px;
+	display: block;
+	font-variant: small-caps;
+}
+
+#wrap #header #sitename .big {
+	display: block;
+	font-size: 65px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding-right: 10px;
+	padding-left: 10px;
+	width: 80px;
+	text-align: center;
+	color: #3a5b71;
+	font-style: italic;
+	text-transform: lowercase;
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
+}
+
+
+#footer #templateinfo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 10px;
+}
+#footer a {
+	color: #CCCCCC;
+}
+
+
+#contents {
+	margin-bottom: 1em;
+}
+
+#wrap #contents p {
+	line-height: 22px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+a {
+	color: #5BBFF4;
+}
+#contents a {
+	display: inline;
+	padding: 3px;
+	height: 15px;
+	margin-right: 5px;
+	margin-left: 5px;
+	background-color: #FFFFCC;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+
+#wrap #header #sitename .grey {
+	color: #CCCCCC;
+}
+a:visited {
+	color: #6E9DCD;
+}
+a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+#wrap #contents .left {
+	float: left;
+}
+#wrap #contents .right {
+	float: right;
+}
+#footer {
+	background-color: #000000;
+	border-top-width: 5px;
+	border-top-style: solid;
+	border-top-color: #333333;
+	padding: 25px;
+}
+#footer a:visited, active {
+	color: #CCCCCC;
+}
+#footer a:hover {
+	color: #FFFFFF;
+}
+
+#calendar {
+    position: absolute;
+    top: 0;
+    right: 0;
+} 

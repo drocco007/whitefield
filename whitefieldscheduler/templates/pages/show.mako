@@ -1,7 +1,7 @@
 <%inherit file="/base.mako"/>\
 
 <div id="schedule-container">
-<p id="previous"><a href="${c.schedule.day_before}">${c.schedule.day_before}</a></p>
+<div id="previous"><a href="${c.schedule.day_before}"><img src="images/navleft.png" alt="${c.schedule.day_before}" /></a></div>
 
 <table id="schedule">
 <tbody>
@@ -38,9 +38,10 @@
 </tbody>
 </table>
 
-<p id="next"><a href="${c.schedule.day_after}">${c.schedule.day_after}</a></p>
+<div id="next"><a href="${c.schedule.day_after}"><img src="images/navright.png" alt="${c.schedule.day_after}" /></a></div>
 
 <div id="calendar"></div>
+
 </div>
 
 <%def name="flip_class(flip)">\
