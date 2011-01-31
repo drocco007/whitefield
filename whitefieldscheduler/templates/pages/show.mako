@@ -1,7 +1,7 @@
 <%inherit file="/base.mako"/>\
 
 <div id="schedule-container">
-<div id="previous"><a href="${c.schedule.day_before}"><img src="images/navleft.png" alt="${c.schedule.day_before}" /></a></div>
+<div id="previous"><a href="${c.schedule.day_before}"><img src="/images/navleft.png" alt="${c.schedule.day_before}" /></a></div>
 
 <table id="schedule">
 <tbody>
@@ -12,7 +12,7 @@
             <span id="day_code_separator">&mdash;</span>
             <span id="day_code">${c.schedule.day_type}</span>
 %endif
-            &nbsp;<img src="calendar.gif" /></th>
+            &nbsp;<img src="/calendar.gif" /></th>
     </tr>
 
 % if c.schedule.schedule:
@@ -38,7 +38,7 @@
 </tbody>
 </table>
 
-<div id="next"><a href="${c.schedule.day_after}"><img src="images/navright.png" alt="${c.schedule.day_after}" /></a></div>
+<div id="next"><a href="${c.schedule.day_after}"><img src="/images/navright.png" alt="${c.schedule.day_after}" /></a></div>
 
 <div id="calendar"></div>
 

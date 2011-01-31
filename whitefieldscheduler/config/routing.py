@@ -20,10 +20,15 @@ def make_map():
 
     # CUSTOM ROUTES HERE
 
-    map.connect("schedule", "/schedule/{title}", controller="day", action="json")
+    map.connect("schedule", "/schedule/{school}/{title}", controller="day",
+                action="json")
 
-    map.connect("schedule", "/{title}", controller="day", action="show")
+    map.connect("schedule", "/{school}/{title}", controller="day",
+                action="show")
 
-    map.connect("schedule", "/", controller="day", action="show", title="today")
+    map.connect("schedule", "/{school}/", controller="day", title="today",
+                action="show")
+
+    map.connect("schedule", "/", controller="day", action="show", title="today", school="us")
 
     return map

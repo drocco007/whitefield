@@ -12,9 +12,12 @@ strings
 True
 
 
-� 2008 Daniel J. Rocco
-Licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License
-http://creativecommons.org/licenses/by-nc-sa/3.0/us/
+© 2008–2011 Daniel J. Rocco
+
+Licensed under the Creative Commons Attribution-Noncommercial-Share
+Alike 3.0 United States License
+
+    http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 
 """
 
@@ -59,9 +62,10 @@ class DaySchedule(object):
     >>> schedule.day_after
     datetime.date(2009, 9, 1)
     """
-    def __init__(self, _date):
+    def __init__(self, _date, _school="us"):
         self.date = parse_date(_date)
         self.period_times = {}
+        self.school = _school
         self.day_code = self.modifier = ""
         self.periods = self.schedule = None
         
@@ -70,11 +74,11 @@ class DaySchedule(object):
         
         self.day_code, self.modifier = day_code[self.date]
 
-        if self.date in specials:
-            self.schedule = specials[self.date]
-        elif self.day_code in day_periods:
-            self.periods = day_periods[self.day_code]
-            self.schedule = map(self._label, schedule[self.modifier])
+        if self.school in specials and self.date in specials[self.school]:
+            self.schedule = specials[self.school][self.date]
+        elif self.day_code in day_periods[self.school]:
+            self.periods = day_periods[self.school][self.day_code]
+            self.schedule = map(self._label, schedule[self.school][self.modifier])
 
     @property
     def date_str(self):
@@ -125,12 +129,7 @@ class DaySchedule(object):
         >>> schedule = DaySchedule("8/27/2009")
         >>> schedule['Lunch']
         '12:50-1:20'
-        >>> schedule['2']
-        '2 not in schedule'
         """
-
-        if key not in self.period_times.keys():
-            return key + ' not in schedule'
         
         return self.period_times[key]
 

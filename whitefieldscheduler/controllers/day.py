@@ -18,12 +18,12 @@ class DayController(BaseController):
 #    def __before__(self):
 #        self.page_q = Session.query(Page)
         
-    def show(self, title):
+    def show(self, title, school):
 #        page = self.page_q.filter_by(title=title).first()
 #        page = find_one_page(title)
 
-        print title
-        schedule = DaySchedule(title)
+        print title, school
+        schedule = DaySchedule(title, school)
 
         c.title = schedule.day + " " + str(schedule.date)
         c.content = str(schedule.schedule)

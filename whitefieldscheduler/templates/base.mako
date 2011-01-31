@@ -15,9 +15,18 @@
         <h1 id="sitename"><span class="big">Whitefield</span>
           <span class="logosmall">Whitefield Academy Class Schedule</span></h1>
         <div id="navigation">
+
+          <%
+             def active(school):
+                if c.schedule.school == school:
+                    return "active"
+
+                return ""
+          %>
+        
           <ul>
-            <li class="active"><a href="index.html">Upper School</a></li>
-            <li><a href="tables.html">Middle School</a></li>
+            <li class="${active('us')}"><a href="/us/${c.schedule.date}">Upper School</a></li>
+            <li class="${active('ms')}"><a href="/ms/${c.schedule.date}">Middle School</a></li>
 
           </ul>
         </div>

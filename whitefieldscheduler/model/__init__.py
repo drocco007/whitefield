@@ -415,22 +415,35 @@ day_code_ay2009_2010 = {
 }
 
 """
-Define the periods for a given day code.  (upper school)
+Define the periods for a given day code.
 """
 day_periods = {
-    "A": [1, 2, 3, 4, "Lunch", 5, 6],
-    "B": [1, 7, 2, 3, "Lunch", 4, 5],
-    "C": [1, 6, 7, 2, "Lunch", 3, 4],
-    "D": [1, 5, 6, 7, "Lunch", 2, 3],
-    "E": [1, 4, 5, 6, "Lunch", 7, 2],
-    "F": [1, 3, 4, 5, "Lunch", 6, 7],
-    "G": [2, 3, 4, 5, "Lunch", 6, 7],
+    "us": {
+        "A": [1, 2, 3, 4, "Lunch", 5, 6],
+        "B": [1, 7, 2, 3, "Lunch", 4, 5],
+        "C": [1, 6, 7, 2, "Lunch", 3, 4],
+        "D": [1, 5, 6, 7, "Lunch", 2, 3],
+        "E": [1, 4, 5, 6, "Lunch", 7, 2],
+        "F": [1, 3, 4, 5, "Lunch", 6, 7],
+        "G": [2, 3, 4, 5, "Lunch", 6, 7],
+    },
+
+    "ms": {
+        "A": [1, 2, 3, "Lunch", 4, 5, 6],
+        "B": [1, 7, 2, "Lunch", 3, 4, 5],
+        "C": [1, 6, 7, "Lunch", 2, 3, 4],
+        "D": [1, 5, 6, "Lunch", 7, 2, 3],
+        "E": [1, 4, 5, "Lunch", 6, 7, 2],
+        "F": [1, 3, 4, "Lunch", 5, 6, 7],
+        "G": [2, 3, 4, "Lunch", 5, 6, 7],
+    },
 }
 
 """
 Define the schedule for a given modifier. 
 """
-schedule = {
+schedule = {}
+schedule["us"] = {
     "": [("7:45-8:10", "Extra Help"), 
          ("8:10-8:25", "Advisee"),
          ("8:30-9:25", 0),
@@ -472,11 +485,54 @@ schedule = {
          ("", 6),
          ],
 }
+schedule["ms"] = {
+    "": [("7:45-8:10", "Extra Help"), 
+         ("8:10-8:25", "Advisee"),
+         ("8:30-9:25", 0),
+         ("9:30-10:25", 1),
+         ("10:30-11:25", 2),
+         ("11:30-12:00", 3),
+         ("12:05-1:00", 4),
+         ("1:05-2:00", 5),
+         ("2:05-3:00", 6),
+         ],
+    "Late": [("8:45-9:10", "Clubs"), 
+         ("9:10-9:25", "Advisee"),
+         ("9:30-10:15", 0),
+         ("10:20-11:05", 1),
+         ("11:10-11:55", 2),
+         ("12:00-12:30", 3),
+         ("12:35-1:20", 4),
+         ("1:25-2:10", 5),
+         ("2:15-3:00", 6),
+         ],
+    "Chapel": [("7:45-8:10", "Extra Help"), 
+         ("8:10-8:55", 0),
+         ("9:00-10:15", "Chapel/Advisee"),
+         ("10:20-11:05", 1),
+         ("11:10-11:55", 2),
+         ("12:00-12:30", 3),
+         ("12:35-1:20", 4),
+         ("1:25-2:10", 5),
+         ("2:15-3:00", 6),
+         ],
+    "Pep": [("", "Extra Help"), 
+         ("", "Advisee"),
+         ("", 0),
+         ("", 1),
+         ("", 2),
+         ("", 3),
+         ("", 4),
+         ("", 5),
+         ("", 6),
+         ],
+}
 
 """
 special days have an explicit schedule
 """
-specials = {
+specials = {}
+specials["us"] = {
     "2010-12-07": [("7:45-8:10", "Extra Help"),
                    ("8:10-8:25", "Advisee"),
                    ("8:30-9:15", "1st Period"),
@@ -528,5 +584,8 @@ day_code.update(day_code_ay2010_2011)
 
 # convert day code dates to date objects
 day_code = dict(zip(map(parse_date, day_code.keys()), day_code.values()))
-specials = dict(zip(map(parse_date, specials.keys()), specials.values()))
+
+for school in specials.keys():
+    specials[school] = dict(zip(map(parse_date, specials[school].keys()),
+                                specials[school].values()))
 
