@@ -52,10 +52,31 @@
 
 #previous, #next {
     float: left;
+
+    display: block;
+    width: 74px;
+    height: 352px;
 }
 
-#previous a img, #next a img {
+#previous a, #next a {
     border-style: none;
+    display:block;
+    width:100%;
+    height:100%;
+    outline:none;
+    text-indent:-9999px;
+}
+
+#previous a {
+    background:transparent url(../images/navleft.png) no-repeat top left;
+}
+
+#next a {
+    background:transparent url(../images/navright.png) no-repeat top left;
+}
+
+#previous a:hover, #next a:hover {
+    background-position: -74px 0;
 }
 
 #previous {
