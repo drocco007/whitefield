@@ -54,6 +54,10 @@
     float: left;
 }
 
+#previous a img, #next a img {
+    border-style: none;
+}
+
 #previous {
     margin-right: 5px;
 }
