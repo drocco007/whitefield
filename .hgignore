@@ -7,3 +7,6 @@ data/
 *.*~
 .ropeproject
 build/
+.idea/
+compass/.sass-cache
+*egg-info/
