@@ -26,6 +26,9 @@ def make_map():
     map.connect("schedule", "/{school}/{title}", controller="day",
                 action="show")
 
+    map.connect("schedule", "/{title}", controller="day", school="us",
+                action="show")
+
     map.connect("schedule", "/{school}/", controller="day", title="today",
                 action="show")
 
