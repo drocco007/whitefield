@@ -178,6 +178,10 @@ h1 {
 	background-repeat: no-repeat;
 }
 
+#wrap #header #navigation #search {
+    margin-top: 3em;
+    text-align: center;
+}
 
 #footer #templateinfo {
 	margin-top: 10px;

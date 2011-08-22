@@ -22,12 +22,20 @@ class DayController(BaseController):
 #        page = self.page_q.filter_by(title=title).first()
 #        page = find_one_page(title)
 
+        if 'date' in request.params:
+            title = request.params['date']
+
         print title, school
         schedule = DaySchedule(title, school)
 
         c.title = schedule.day + " " + str(schedule.date)
         c.content = str(schedule.schedule)
         c.schedule = schedule
+        c.schedules = [
+            DaySchedule(str(schedule.day_before), school),
+            schedule,
+            DaySchedule(str(schedule.day_after), school),
+        ]
 
         return render('/pages/show.mako')
 

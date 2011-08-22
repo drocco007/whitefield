@@ -1,0 +1,179 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+
+// Combine the partials into a single screen stylesheet.
+@import "partials/page";
+@import "partials/form";
+@import "partials/two_col";
+
+@import "blueprint/buttons";
+@import "buttons";
+
+
+/*
+ * main document settings
+ */
+
+body {
+	background-image: url(../images/bg.png);
+	background-repeat: repeat-x;
+	color: #666666;
+}
+
+
+
+/*
+ * header
+ */
+
+#header {
+	margin-top: 30px;
+    border-bottom: thin solid #cccccc;
+    
+    #logo {
+        display: block;
+        float: left;
+        margin-top: 10px;
+    }
+
+    #sitename {
+        display: block;
+        float: left;
+        font-size: 25px;
+        padding-top: 15px;
+    }
+
+    .logosmall {
+        font-size: 14px;
+        text-align: center;
+        padding: 3px;
+        display: block;
+        font-variant: small-caps;
+    }
+
+    .big {
+        display: block;
+        font-size: 65px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        padding-right: 10px;
+        padding-left: 10px;
+        width: 80px;
+        height: 75px;
+        text-align: center;
+        color: #3a5b71;
+        font-style: italic;
+        text-transform: lowercase;
+        background-image: url(../images/logo.png);
+        background-repeat: no-repeat;
+    }
+
+    nav a {
+        text-decoration: none;
+
+        @include anchor-button(left);
+
+        // colors: font, bg, border, border-highlight
+        @include button-colors(#888, #CCC, #BBB, #BBB);
+        @include button-hover-colors(#333, #AAA, #BBB, #BBB);
+
+        margin-right: -1px;
+
+        background: #CCC url(../images/glass.png) 50% 50% repeat-x;
+        font-weight: normal;
+    }
+
+    nav a.active {
+        @include button-colors(black, white, #BBB, #BBB);
+        background-image: none;
+    }
+
+    #search {
+        float: right;
+
+        img.ui-datepicker-trigger {
+            padding-left: 5px;
+        }
+    }
+}
+
+#schedule tr.top {
+    height: 34px;
+}
+
+#footer a {
+	color: #CCCCCC;
+}
+
+a {
+	color: #5BBFF4;
+}
+
+#contents a {
+	display: inline;
+	padding: 3px;
+	height: 15px;
+	margin-right: 5px;
+	margin-left: 5px;
+	background-color: #FFFFCC;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+
+#wrap #header #sitename .grey {
+	color: #CCCCCC;
+}
+a:visited {
+	color: #6E9DCD;
+}
+a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+#footer {
+    background-color: #000;
+    border-top-width: 5px;
+    border-top-style: solid;
+    border-top-color: #555;
+    padding: 10px 25px 50px 25px;
+    color: #555;
+}
+
+#footer a:visited, active {
+	color: #CCCCCC;
+}
+#footer a:hover {
+	color: #FFFFFF;
+}
+
+
+.round-corners-4 {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+}
+
+
+/*
+ * datepicker
+ */
+
+div.ui-datepicker {
+    width: 306px;
+
+    a.ui-state-default {
+        text-decoration: none;
+    }
+}
