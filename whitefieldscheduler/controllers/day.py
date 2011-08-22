@@ -39,6 +39,19 @@ class DayController(BaseController):
 
         return render('/pages/show.mako')
 
+    def show_mobile(self, title):
+        if 'date' in request.params:
+            title = request.params['date']
+
+        print "mobile: ", title
+        schedule = DaySchedule(title)
+
+        c.title = schedule.day + " " + str(schedule.date)
+        c.content = str(schedule.schedule)
+        c.schedule = schedule
+
+        return render('/pages/show_mobile.mako')
+
     @jsonify
     def json(self, title):
         schedule = DaySchedule(title)

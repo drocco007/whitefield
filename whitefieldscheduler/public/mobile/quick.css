@@ -1,0 +1,28 @@
+.ui-header .ui-btn {
+    display: none;
+}
+
+#logo {
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+    font-family: serif;
+}
+
+#logo #w {
+    position: relative;
+    left: 3px;
+    font-size: 125%;
+}
+
+#logo #mobile {
+    position: relative;
+    left: -2em;
+    top: 0.75em;
+
+    font-style: normal;
+    font-variant: small-caps;
+}

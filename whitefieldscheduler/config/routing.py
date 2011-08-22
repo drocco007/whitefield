@@ -20,6 +20,22 @@ def make_map():
 
     # CUSTOM ROUTES HERE
 
+    # mobile version
+
+#    map.connect("schedule", "/{school}/{title}", controller="day",
+#                action="show")
+
+    map.connect("schedule", "/mobile/{title}", controller="day", school="us",
+                action="show_mobile")
+
+#    map.connect("schedule", "/{school}/", controller="day", title="today",
+#                action="show")
+
+    map.connect("schedule", "/mobile/", controller="day", action="show_mobile", title="today", school="us")
+
+
+    # full version
+    
     map.connect("schedule", "/schedule/{school}/{title}", controller="day",
                 action="json")
 
@@ -33,5 +49,7 @@ def make_map():
                 action="show")
 
     map.connect("schedule", "/", controller="day", action="show", title="today", school="us")
+
+
 
     return map
