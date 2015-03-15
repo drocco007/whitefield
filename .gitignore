@@ -1,0 +1,12 @@
+*.pyc
+data/
+*.egg
+*.orig
+*.*~
+.ropeproject
+build/
+.idea/
+compass/.sass-cache
+*egg-info/
+dist/
+.eggs/
