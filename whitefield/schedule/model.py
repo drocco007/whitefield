@@ -60,10 +60,10 @@ class DaySchedule(object):
     >>> schedule.day_after
     datetime.date(2009, 9, 1)
     """
-    def __init__(self, _date, _school="us"):
+    def __init__(self, _date, school='us'):
         self.date = parse_date(_date)
         self.period_times = {}
-        self.school = _school
+        self.school = school or 'us'
         self.day_code = self.modifier = ""
         self.periods = self.schedule = None
 

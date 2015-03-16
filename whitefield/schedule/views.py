@@ -1,8 +1,8 @@
 from whitefield.schedule import DaySchedule
 
 
-def json_schedule(date_string):
-    schedule = DaySchedule(date_string)
+def json_schedule(date_string, school=None):
+    schedule = DaySchedule(date_string, school=school)
 
     return {
         'date': schedule.date,
