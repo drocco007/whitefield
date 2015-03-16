@@ -3,13 +3,14 @@ from setuptools import setup, find_packages
 
 setup(
     name='WhitefieldScheduler',
-    version='0.9',
+    version='0.10.0',
     description='Whitefield class schedule application',
     author='Daniel J. Rocco',
     author_email='drocco@gmail.com',
     url='',
     install_requires=[
-        "parsedatetime>=0.8.6",
+        'parsedatetime>=0.8.6',
+        'pyramid',
     ],
     packages=find_packages(exclude=['ez_setup']),
     include_package_data=True,
