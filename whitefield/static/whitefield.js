@@ -44,7 +44,7 @@ var NavButton = React.createClass({
 
 var DaySchedule = React.createClass({
     getInitialState: function () {
-        return {data: {schedule: []}};
+        return {schedule: []};
     },
     loadSchedule: function (day) {
         var url = day ?
@@ -55,7 +55,7 @@ var DaySchedule = React.createClass({
             url: url,
             dataType: 'json',
             success: function (data) {
-                this.setState({data: data});
+                this.setState(data);
             }.bind(this),
             error: function (xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -65,16 +65,21 @@ var DaySchedule = React.createClass({
     componentDidMount: function () {
         this.loadSchedule();
     },
+
     render: function () {
         return (
             <div>
-                <h2>{this.state.data.day}–{this.state.data.date}–{this.state.data.day_type}</h2>
+                <h2>{this.state.day}–{this.state.date}–{this.state.day_type}</h2>
 
-                <PeriodList schedule={this.state.data.schedule} />
+                <PeriodList schedule={this.state.schedule} />
 
-                <NavButton label="« Previous" day={this.state.data.day_before} onNavigate={this.loadSchedule} />
+                <br/>
+
+                <NavButton label="« Previous" day={this.state.day_before}
+                    onNavigate={this.loadSchedule} />
                 &nbsp;
-                <NavButton label="Next »" day={this.state.data.day_after} onNavigate={this.loadSchedule} />
+                <NavButton label="Next »" day={this.state.day_after}
+                    onNavigate={this.loadSchedule} />
             </div>
         )
     }
