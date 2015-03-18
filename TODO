@@ -1,9 +1,6 @@
-* get tests going again
-* extract date logic
-* update dates for current AY
+* declarative Pyramid config
 * add proper persistence
 * get rid of pylons sites
-* React.js
 
 * provide a way to import dates without redeploying
 * users, auth, & permissions
