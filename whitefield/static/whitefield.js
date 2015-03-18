@@ -12,7 +12,9 @@ var Period = React.createClass({
 
 var PeriodList = React.createClass({
     render: function() {
-        var schedule = this.props.schedule.map(function(period) {
+        var schedule = this.props.schedule || [];
+
+        schedule = schedule.map(function(period) {
             return (
                 <Period time={period[0]} period={period[1]} />
             );
@@ -27,13 +29,30 @@ var PeriodList = React.createClass({
 });
 
 
+var NavButton = React.createClass({
+    handleClick: function() {
+        this.props.onNavigate(this.props.day);
+    },
+
+    render: function() {
+        return (
+            <button onClick={this.handleClick}>{this.props.label}</button>
+        )
+    }
+});
+
+
 var DaySchedule = React.createClass({
     getInitialState: function () {
         return {data: {schedule: []}};
     },
-    loadCommentsFromServer: function () {
+    loadSchedule: function (day) {
+        var url = day ?
+            "/1/schedule/" + day
+            : this.props.url;
+
         $.ajax({
-            url: this.props.url,
+            url: url,
             dataType: 'json',
             success: function (data) {
                 this.setState({data: data});
@@ -43,15 +62,8 @@ var DaySchedule = React.createClass({
             }.bind(this)
         });
     },
-    handleCommentSubmit: function (comment) {
-        // TODO: submit to the server and refresh the list
-        var comments = this.state.data;
-        var newComments = comments.concat([comment]);
-        this.setState({data: newComments});
-    },
     componentDidMount: function () {
-        this.loadCommentsFromServer();
-        // setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+        this.loadSchedule();
     },
     render: function () {
         return (
@@ -59,6 +71,10 @@ var DaySchedule = React.createClass({
                 <h2>{this.state.data.day}–{this.state.data.date}–{this.state.data.day_type}</h2>
 
                 <PeriodList schedule={this.state.data.schedule} />
+
+                <NavButton label="« Previous" day={this.state.data.day_before} onNavigate={this.loadSchedule} />
+                &nbsp;
+                <NavButton label="Next »" day={this.state.data.day_after} onNavigate={this.loadSchedule} />
             </div>
         )
     }
@@ -66,6 +82,6 @@ var DaySchedule = React.createClass({
 
 
 React.render(
-    <DaySchedule url="/1/schedule/" />,
+    <DaySchedule url={"/1/schedule/" + $(location).attr('hash').slice(1)} />,
     document.getElementById('content')
 );

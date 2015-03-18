@@ -11,6 +11,8 @@ def json_schedule(date_string, school=None):
         'day_code': schedule.day_code,
         'modifier': schedule.modifier,
         'day_type': schedule.day_type,
+        'day_before': schedule.day_before,
+        'day_after': schedule.day_after,
         'periods': schedule.periods,
         'schedule': schedule.schedule,
     }
