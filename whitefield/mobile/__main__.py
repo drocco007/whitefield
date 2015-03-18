@@ -9,8 +9,8 @@ def schedule_include(config):
     config.add_route('schedule:date', '/{date}')
 
 
-if __name__ == '__main__':
-    config = Configurator()
+def main(global_config, **settings):
+    config = Configurator(settings=settings)
 
     config.include(schedule_include, route_prefix='/1/schedule')
     config.add_route('root', '/')
@@ -26,6 +26,10 @@ if __name__ == '__main__':
     json_renderer.add_adapter(datetime.datetime, string_adapter)
     config.add_renderer('json', json_renderer)
 
-    app = config.make_wsgi_app()
+    return config.make_wsgi_app()
+
+
+if __name__ == '__main__':
+    app = main()
     server = make_server('0.0.0.0', 6543, app)
     server.serve_forever()

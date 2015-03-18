@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='WhitefieldScheduler',
-    version='0.10.0',
+    version='0.10.1',
     description='Whitefield class schedule application',
     author='Daniel J. Rocco',
     author_email='drocco@gmail.com',
@@ -18,10 +18,7 @@ setup(
     zip_safe=False,
     paster_plugins=['PasteScript', 'Pylons'],
     entry_points="""
-    #[paste.app_factory]
-    #main = whitefieldscheduler.config.middleware:make_app
-
-    #[paste.app_install]
-    #main = pylons.util:PylonsInstaller
+    [paste.app_factory]
+    main = whitefield.mobile.__main__:main
     """,
 )
