@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     config.include(schedule_include, route_prefix='/1/schedule')
     config.add_route('root', '/')
-    config.add_static_view(name='/', path='whitefield:static')
+    config.add_static_view(name='/', path='whitefield.mobile:static')
 
     config.scan('whitefield.mobile.views')
     json_renderer = JSON()
