@@ -21,8 +21,10 @@ var PeriodList = React.createClass({
         });
 
         return (
-            <table>
-                {schedule}
+            <table className="table table-striped">
+                <tbody>
+                    {schedule}
+                </tbody>
             </table>
         )
     }
@@ -93,20 +95,22 @@ var DaySchedule = React.createClass({
     render: function () {
         return (
             <div>
-                <h2>{this.state.day}–{this.state.date}–{this.state.day_type}</h2>
+                <h3>{moment(this.state.date, 'YYYY-MM-DD').format('dddd, MMMM Do')}–{this.state.day_type}</h3>
 
                 <PeriodList schedule={this.state.schedule} />
 
                 <br/>
 
-                <NavButton label="« Previous" day={this.state.day_before}
-                    onNavigate={this.loadSchedule} />
-                &nbsp;
-                <SchoolButton school={this.state.school || this.props.school}
-                    onSchoolClick={this.changeSchool} />
-                &nbsp;
-                <NavButton label="Next »" day={this.state.day_after}
-                    onNavigate={this.loadSchedule} />
+                <div className="nav">
+                    <NavButton label="« Previous" day={this.state.day_before}
+                        onNavigate={this.loadSchedule} />
+                    &nbsp;
+                    <SchoolButton school={this.state.school || this.props.school}
+                        onSchoolClick={this.changeSchool} />
+                    &nbsp;
+                    <NavButton label="Next »" day={this.state.day_after}
+                        onNavigate={this.loadSchedule} />
+                </div>
             </div>
         )
     }
