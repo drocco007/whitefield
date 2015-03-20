@@ -93,9 +93,14 @@ var DaySchedule = React.createClass({
     },
 
     render: function () {
+        var date_label = this.state.date ?
+            moment(this.state.date, 'YYYY-MM-DD').format('dddd, MMMM Do') : "";
+        var day_label = this.state.day_type ? '—' + this.state.day_type : "";
+
+
         return (
             <div>
-                <h3>{moment(this.state.date, 'YYYY-MM-DD').format('dddd, MMMM Do')}–{this.state.day_type}</h3>
+                <h3>{date_label}{day_label}</h3>
 
                 <PeriodList schedule={this.state.schedule} />
 
