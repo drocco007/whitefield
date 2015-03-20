@@ -38,7 +38,8 @@ var NavButton = React.createClass({
 
     render: function() {
         return (
-            <button onClick={this.handleClick}>{this.props.label}</button>
+            <button className="btn btn-default"
+                onClick={this.handleClick}>{this.props.label}</button>
         )
     }
 });
@@ -51,7 +52,8 @@ var SchoolButton = React.createClass({
 
     render: function() {
         return (
-            <button onClick={this.handleClick}>{this.props.school.toUpperCase()}
+            <button className="btn btn-default"
+                onClick={this.handleClick}>{this.props.school.toUpperCase()}
             </button>
         )
     }
@@ -96,7 +98,6 @@ var DaySchedule = React.createClass({
         var date_label = this.state.date ?
             moment(this.state.date, 'YYYY-MM-DD').format('dddd, MMMM Do') : "";
         var day_label = this.state.day_type ? '—' + this.state.day_type : "";
-
 
         return (
             <div>
