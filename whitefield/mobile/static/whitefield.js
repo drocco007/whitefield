@@ -38,8 +38,8 @@ var NavButton = React.createClass({
 
     render: function() {
         return (
-            <button className="btn btn-default"
-                onClick={this.handleClick}>{this.props.label}</button>
+            <a className="btn btn-default"
+                onClick={this.handleClick}>{this.props.label}</a>
         )
     }
 });
@@ -52,9 +52,9 @@ var SchoolButton = React.createClass({
 
     render: function() {
         return (
-            <button className="btn btn-default"
+            <a className="btn btn-default"
                 onClick={this.handleClick}>{this.props.school.toUpperCase()}
-            </button>
+            </a>
         )
     }
 });
