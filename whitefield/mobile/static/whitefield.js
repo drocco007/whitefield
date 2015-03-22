@@ -60,6 +60,17 @@ var SchoolButton = React.createClass({
 });
 
 
+var DayLabel = React.createClass({
+    render: function() {
+        var date_label = this.props.date ?
+            moment(this.props.date, 'YYYY-MM-DD').format('dddd, MMMM Do') : "";
+        var day_label = this.props.day_type ? '—' + this.props.day_type : "";
+
+        return (<span>{date_label}{day_label}</span>);
+    }
+});
+
+
 var DaySchedule = React.createClass({
     getInitialState: function () {
         return {schedule: []};
@@ -94,15 +105,20 @@ var DaySchedule = React.createClass({
         this.loadSchedule();
     },
 
-    render: function () {
-        var date_label = this.state.date ?
-            moment(this.state.date, 'YYYY-MM-DD').format('dddd, MMMM Do') : "";
-        var day_label = this.state.day_type ? '—' + this.state.day_type : "";
+    componentDidUpdate: function() {
+        this.renderLabel(this.state.date, this.state.day_type);
+    },
 
+    renderLabel: function(date, day_type) {
+        React.render(
+            <DayLabel date={date} day_type={day_type} />,
+            document.getElementById('day-label')
+        )
+    },
+
+    render: function () {
         return (
             <div>
-                <h3>{date_label}{day_label}</h3>
-
                 <PeriodList schedule={this.state.schedule} />
 
                 <br/>
