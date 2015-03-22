@@ -1,5 +1,9 @@
+* Keyboard navigation
+* swipe (mobile) navigation
+* jump to date
 * add proper persistence
 * get rid of pylons sites
+* Remember me cookie
 
 * provide a way to import dates without redeploying
 * users, auth, & permissions
