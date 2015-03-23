@@ -4,6 +4,7 @@
 * add proper persistence
 * get rid of pylons sites
 * Remember me cookie
+* precompile JSX
 
 * provide a way to import dates without redeploying
 * users, auth, & permissions
