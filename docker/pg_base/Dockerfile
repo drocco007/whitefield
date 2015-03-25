@@ -80,6 +80,9 @@ VOLUME ["/var/cache/nginx"]
 
 EXPOSE 80 443
 
+RUN groupadd -g 1000 drocco
+RUN usermod -G drocco nginx
+
 
 #
 # supervisor
