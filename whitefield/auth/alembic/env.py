@@ -23,6 +23,11 @@ target_metadata = model.Base.metadata
 # ... etc.
 
 
+def include_object(object, name, type, reflected, compare_to):
+    return name not in {'alembic_ziggurat_foundations_version',
+                        'groups_group_name_key'}
+
+
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
 
@@ -36,7 +41,8 @@ def run_migrations_offline():
 
     """
     url = config.get_main_option("sqlalchemy.url")
-    context.configure(url=url, target_metadata=target_metadata)
+    context.configure(url=url, target_metadata=target_metadata,
+                      include_object=include_object)
 
     with context.begin_transaction():
         context.run_migrations()
@@ -57,7 +63,8 @@ def run_migrations_online():
     with connectable.connect() as connection:
         context.configure(
             connection=connection,
-            target_metadata=target_metadata
+            target_metadata=target_metadata,
+            include_object=include_object
         )
 
         with context.begin_transaction():

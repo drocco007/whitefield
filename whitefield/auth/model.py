@@ -1,28 +1,62 @@
-from sqlalchemy import (
-    Column,
-    Index,
-    Integer,
-    Text,
-    )
-
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import (
     scoped_session,
     sessionmaker,
-    )
+)
 
 from zope.sqlalchemy import ZopeTransactionExtension
 
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
+from ziggurat_foundations.models import (
+    BaseModel, UserMixin, GroupMixin,
+    GroupPermissionMixin, UserGroupMixin,
+    GroupResourcePermissionMixin, ResourceMixin,
+    UserPermissionMixin, UserResourcePermissionMixin,
+    ExternalIdentityMixin
+)
 
-# class MyModel(Base):
-#     __tablename__ = 'models'
-#     id = Column(Integer, primary_key=True)
-#     name = Column(Text)
-#     value = Column(Integer)
-#
-# Index('my_index', MyModel.name, unique=True, mysql_length=255)
+from ziggurat_foundations import ziggurat_model_init
 
+
+class Group(GroupMixin, Base):
+    pass
+
+
+class GroupPermission(GroupPermissionMixin, Base):
+    pass
+
+
+class UserGroup(UserGroupMixin, Base):
+    pass
+
+
+class GroupResourcePermission(GroupResourcePermissionMixin, Base):
+    pass
+
+
+class Resource(ResourceMixin, Base):
+    pass
+
+
+class UserPermission(UserPermissionMixin, Base):
+    pass
+
+
+class UserResourcePermission(UserResourcePermissionMixin, Base):
+    pass
+
+
+class User(UserMixin, Base):
+    pass
+
+
+class ExternalIdentity(ExternalIdentityMixin, Base):
+    pass
+
+
+ziggurat_model_init(User, Group, UserGroup, GroupPermission, UserPermission,
+                    UserResourcePermission, GroupResourcePermission, Resource,
+                    ExternalIdentity)

@@ -26,6 +26,9 @@ def main(global_config, **settings):
     json_renderer.add_adapter(datetime.datetime, string_adapter)
     config.add_renderer('json', json_renderer)
 
+    # FIXME: can this be done declaratively?
+    config.include('whitefield.auth')
+
     return config.make_wsgi_app()
 
 
