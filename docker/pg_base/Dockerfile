@@ -1,4 +1,4 @@
-FROM python:3-slim
+FROM python:latest
 MAINTAINER Daniel Rocco <drocco@gmail.com>
 
 
@@ -29,12 +29,7 @@ RUN apt-get update
 #  them by prefixing each apt-get statement with DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y -q install python-software-properties \
     software-properties-common supervisor postgresql-9.4 \
-    postgresql-client-9.4 postgresql-contrib-9.4 python3-psycopg2
-
-# Grrrr. Fix psycopg2 install
-RUN ln -s  /usr/lib/python3/dist-packages/psycopg2/_psycopg*.so /usr/lib/python3/dist-packages/psycopg2/_psycopg.so
-RUN ln -s /usr/lib/python3/dist-packages/psycopg2 /usr/local/lib/python3.4/site-packages/
-
+    postgresql-client-9.4 postgresql-contrib-9.4
 
 
 # Add en_US.UTF-8 locale
@@ -74,9 +69,7 @@ VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
 USER root
 
-ENV NGINX_VERSION 1.7.10-1~wheezy
-
-RUN apt-get install -y ca-certificates nginx=${NGINX_VERSION} && \
+RUN apt-get install -y ca-certificates nginx && \
     rm -rf /var/lib/apt/lists/*
 
 # forward request and error logs to docker log collector
@@ -105,3 +98,11 @@ CMD ["/usr/bin/supervisord"]
 #
 
 RUN ["pip", "install", "--use-wheel", "pyramid", "parsedatetime", "waitress"]
+
+
+#
+# clean up
+#
+
+USER root
+RUN apt-get -y autoremove

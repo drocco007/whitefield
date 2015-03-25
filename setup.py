@@ -5,11 +5,13 @@ requires = [
     'pyramid',
     'pyramid_tm',
     'SQLAlchemy',
-    # 'psycopg2',
+    'psycopg2',
     'transaction',
     'zope.sqlalchemy',
     'waitress',
     'parsedatetime>=0.8.6',
+    'alembic',
+    'ziggurat_foundations',
 ]
 
 setup(
