@@ -25,8 +25,3 @@ def parse_date(date_string):
 
 
 from .model import DaySchedule
-
-
-def includeme(config):
-    config.add_route('schedule', '/')
-    config.add_route('schedule:date', '/{date}')

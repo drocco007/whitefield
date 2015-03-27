@@ -7,8 +7,7 @@ def main(global_config, **settings):
 
     # FIXME: can this be done declaratively?
     config.include('whitefield.auth', route_prefix='/1/auth')
-    config.include('whitefield.schedule', route_prefix='/1/schedule')
-    config.include('whitefield.mobile')
+    config.include('whitefield.mobile', route_prefix='/1/schedule')
 
     return config.make_wsgi_app()
 

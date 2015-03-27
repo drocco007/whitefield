@@ -1,3 +1,4 @@
+from sqlalchemy import Column, Unicode, String
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import (
@@ -50,7 +51,8 @@ class UserResourcePermission(UserResourcePermissionMixin, Base):
 
 
 class User(UserMixin, Base):
-    pass
+    full_name = Column(Unicode, nullable=False)
+    school = Column(String(2))
 
 
 class ExternalIdentity(ExternalIdentityMixin, Base):

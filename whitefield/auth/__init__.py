@@ -9,5 +9,12 @@ def init_db(config):
     model.Base.metadata.bind = engine
 
 
+def init_routes(config):
+    config.add_route('update_user', '/users', request_method='POST')
+
+    config.scan('whitefield.auth.views')
+
+
 def includeme(config):
     init_db(config)
+    init_routes(config)

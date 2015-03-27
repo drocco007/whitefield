@@ -3,6 +3,9 @@ from pyramid.renderers import JSON
 
 
 def includeme(config):
+    config.add_route('schedule', '/')
+    config.add_route('schedule:date', '/{date}')
+
     config.add_route('root', '/')
     config.add_static_view(name='/', path='whitefield.mobile:static')
 

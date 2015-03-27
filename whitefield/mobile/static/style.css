@@ -1,0 +1,27 @@
+/* Fixed navbar */
+body {
+    padding-top: 70px;
+}
+
+body > .container {
+    max-width: 375px;
+}
+
+form.dropdown-menu {
+    padding: 5px 1em;
+}
+
+@media (min-width: 768px){
+    form.dropdown-menu {
+        min-width: 300px;
+    }
+}
+
+.table {
+    margin: 0 auto;
+    max-width: 230px;
+}
+
+.nav {
+    text-align: center;
+}
