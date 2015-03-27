@@ -10,6 +10,7 @@ def init_db(config):
 
 
 def init_routes(config):
+    config.add_route('login', '/login', request_method='POST')
     config.add_route('update_user', '/users', request_method='POST')
 
     config.scan('whitefield.auth.views')
