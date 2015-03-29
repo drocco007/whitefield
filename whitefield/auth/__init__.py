@@ -2,6 +2,7 @@ from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from sqlalchemy import engine_from_config
 
+from . import user
 
 def init_db(config):
     from . import model
@@ -23,6 +24,7 @@ def init_auth(config):
 def init_routes(config):
     config.add_route('login', '/login', request_method='POST')
     config.add_route('logout', '/logout')
+    config.add_route('user_info', '/users/current')
     config.add_route('update_user', '/users', request_method='POST')
 
     config.scan('whitefield.auth.views')

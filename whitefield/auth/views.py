@@ -1,6 +1,8 @@
 from pyramid.response import Response
 from pyramid.security import remember, forget
 from pyramid.view import view_config
+
+from .. import auth
 from .model import User, DBSession
 
 
@@ -18,7 +20,16 @@ def login(request):
 @view_config(route_name='logout', renderer='json')
 def logout(request):
     headers = forget(request)
-    return Response("YOU LOGGED OUT!", headers=headers)
+    return Response("Signed out", headers=headers)
+
+
+@view_config(route_name='user_info', renderer='json')
+def user_info(request):
+    try:
+        user = User.by_id(request.authenticated_userid, DBSession)
+        return auth.user.as_json(user)
+    except AttributeError:
+        return {}
 
 
 @view_config(route_name='update_user', renderer='json')
