@@ -1,3 +1,4 @@
+from pyramid.security import Everyone, Allow
 from sqlalchemy import Column, Unicode, String
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -62,3 +63,8 @@ class ExternalIdentity(ExternalIdentityMixin, Base):
 ziggurat_model_init(User, Group, UserGroup, GroupPermission, UserPermission,
                     UserResourcePermission, GroupResourcePermission, Resource,
                     ExternalIdentity)
+
+
+class RootFactory(object):
+    def __init__(self, request):
+        self.__acl__ = [(Allow, Everyone, 'anything')]
