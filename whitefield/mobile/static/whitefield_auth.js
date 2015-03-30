@@ -45,12 +45,18 @@ var SignInOutControl = React.createClass({
 
 var ProfileControl = React.createClass({
     render: function() {
+        var school = this.props.school || "";
+
+        if (school) {
+            school = ["(", school.toUpperCase(), ")"].join("");
+        }
+
         if (this.props.full_name) {
             return (
                 <li className="">
                     <a href="#">
                         <i className="glyphicon glyphicon-user"></i>&nbsp;
-                        {this.props.full_name}
+                        {this.props.full_name} {school}
                     </a>
                 </li>
             );
@@ -86,7 +92,8 @@ var NavBar = React.createClass({
     render: function() {
         return (
             <ul className="nav navbar-nav navbar-right">
-                <ProfileControl full_name={this.state.full_name} />
+                <ProfileControl full_name={this.state.full_name}
+                    school={this.state.school} />
                 <SignInOutControl full_name={this.state.full_name}
                     onLogout={this.loadUser} />
             </ul>
