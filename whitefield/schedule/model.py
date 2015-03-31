@@ -23,7 +23,8 @@ Alike 3.0 United States License
 
 from datetime import timedelta
 
-from .data import day_code, day_periods, schedule, specials
+from .data import day_code, day_periods, schedule, specials, lookup_day_code, \
+    lookup_schedule
 from . import parse_date, ONE_DAY
 
 
@@ -64,19 +65,12 @@ class DaySchedule(object):
         self.date = parse_date(_date)
         self.period_times = {}
         self.school = school or 'us'
-        self.day_code = self.modifier = ""
-        self.periods = self.schedule = None
+        self.day_code, self.modifier = lookup_day_code(self.date)
+        self.periods, self.schedule = lookup_schedule(
+            self.school, self.date, self.day_code, self.modifier)
 
-        if self.date not in day_code:
-            return
-
-        self.day_code, self.modifier = day_code[self.date]
-
-        if self.school in specials and self.date in specials[self.school]:
-            self.schedule = specials[self.school][self.date]
-        elif self.day_code in day_periods[self.school]:
-            self.periods = day_periods[self.school][self.day_code]
-            self.schedule = list(map(self._label, schedule[self.school][self.modifier]))
+        # FIXME: remove nasty stateful dependency in _label
+        self.schedule = [self._label(period) for period in self.schedule]
 
     @property
     def date_str(self):
@@ -94,7 +88,7 @@ class DaySchedule(object):
     def day_type(self):
         """Describes the day, e.g. "B", "Late G", "Arts", etc."""
 
-        return " ".join( (self.modifier, self.day_code) ).strip()
+        return " ".join((self.modifier, self.day_code)).strip()
 
     @property
     def day_before(self):
@@ -119,7 +113,7 @@ class DaySchedule(object):
         if not self.day_type:
             return self.date_str
 
-        return "-".join( (self.date_str, self.day_type) )
+        return "-".join((self.date_str, self.day_type))
 
     def __getitem__(self, key):
         """Return the time slot for a given period.

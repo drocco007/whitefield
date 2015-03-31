@@ -40,3 +40,15 @@ def test_can_navigate_previous_day(schedule):
 
 def test_can_navigate_next_day(schedule):
     assert date(2009, 9, 1) == schedule.day_after
+
+
+def test_unrecognized_date_should_have_empty_schedule():
+    schedule = DaySchedule('April 10, 2015')
+
+    assert not schedule.schedule
+
+
+def test_completely_unknown_date_should_have_empty_schedule():
+    schedule = DaySchedule('January 1, 1970')
+
+    assert not schedule.schedule

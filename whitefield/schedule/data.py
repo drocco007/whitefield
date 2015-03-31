@@ -1006,3 +1006,27 @@ for school in specials.keys():
     specials[school] = dict(zip(map(parse_date, specials[school].keys()),
                                 specials[school].values()))
 
+
+def lookup_day_code(for_date):
+    try:
+        return day_code[for_date]
+    except KeyError:
+        return '', ''
+
+
+def lookup_schedule(school, date, day_code=None, modifier=None,
+                    labeler=lambda x: x):
+    if not day_code or not modifier:
+        day_code, modifier = lookup_day_code(date)
+
+    _periods = []
+    _schedule = []
+
+    if school in specials and date in specials[school]:
+        _schedule = specials[school][date]
+    elif day_code in day_periods[school]:
+        _periods = day_periods[school][day_code]
+        _schedule = [labeler(period) for period in
+                     schedule.get(school, {}).get(modifier, [])]
+
+    return _periods, _schedule
