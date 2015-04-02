@@ -1,10 +1,28 @@
 var SignInOutControl = React.createClass({
+    login: function(e) {
+        this.close_menu();
+
+        $(e.target).ajaxSubmit(function(data) {
+            // TODO: handle failure
+            this.props.onLogin();
+        }.bind(this));
+
+        e.preventDefault();
+    },
+
     logout: function(e) {
-        $(this.getDOMNode()).parents(".collapse").collapse("hide");
+        this.close_menu();
 
         $.get('/1/auth/logout', function() {
             this.props.onLogout();
         }.bind(this));
+    },
+
+    close_menu: function() {
+        var menu = $(this.getDOMNode()).parents(".collapse");
+
+        if (menu.hasClass("in"))
+            menu.collapse("hide");
     },
 
     render: function() {
@@ -22,7 +40,8 @@ var SignInOutControl = React.createClass({
                         Sign in
                     </a>
 
-                    <form className="dropdown-menu" action="/1/auth/login" method="post">
+                    <form className="dropdown-menu" action="/1/auth/login"
+                          method="post" onSubmit={this.login}>
                         <div className="form-group">
                             <label htmlFor="email">Email address</label>
                             <input type="email" className="form-control" id="email"
@@ -95,7 +114,7 @@ var NavBar = React.createClass({
                 <ProfileControl full_name={this.state.full_name}
                     school={this.state.school} />
                 <SignInOutControl full_name={this.state.full_name}
-                    onLogout={this.loadUser} />
+                    onLogin={this.loadUser} onLogout={this.loadUser} />
             </ul>
         );
     }
