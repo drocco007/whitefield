@@ -1,8 +1,9 @@
 from pyramid.response import Response
-from pyramid.security import remember, forget
+from pyramid.security import remember, forget, Authenticated
 from pyramid.view import view_config
 
 from .. import auth
+from ..mobile.views import schedule as anonymous_schedule
 from .model import User, DBSession
 
 
@@ -43,3 +44,16 @@ def update_user(request):
     DBSession.add(user)
 
     return {}
+
+
+@view_config(route_name='schedule', renderer='json',
+             effective_principals=Authenticated)
+@view_config(route_name='schedule:date', renderer='json',
+             effective_principals=Authenticated)
+def user_schedule(request):
+    schedule = anonymous_schedule(request)
+    user = User.by_id(request.authenticated_userid, DBSession)
+
+    schedule['user'] = auth.user.as_json(user)
+
+    return schedule

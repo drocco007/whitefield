@@ -1,9 +1,64 @@
+var SignupForm = React.createClass({
+    cancel: function(e) {
+        e.preventDefault();
+        React.unmountComponentAtNode(this.props.element);
+        $(this.props.element).remove();
+    },
+
+    render: function() {
+        return (
+            <div className="sign-up-form">
+                <form method="post" action="/1/auth/users">
+                    <div id="legend">
+                        <legend>Sign up for extra time</legend>
+                    </div>
+                    <div className="form-group">
+                        <label>Time</label>
+                        <div><DayLabel date={this.props.date} /></div>
+                        <div>Period {this.props.period} ({this.props.time})</div>
+                    </div>
+                    <div className="form-group">
+                        <label>Instructor</label>
+                        <input type="email" className="form-control" id="email" name="email"
+                               placeholder="ex. Eden Gulledge" />
+                    </div>
+                    <div className="form-group">
+                        <label>Class</label>
+                        <input type="password" className="form-control" name="password"
+                               id="password" placeholder="ex. Algebra 2" />
+                    </div>
+                    <button type="submit" className="btn btn-default">Submit</button>
+                    <button className="btn btn-default" onClick={this.cancel}>Cancel</button>
+                </form>
+            </div>
+        );
+    }
+});
+
+
 var Period = React.createClass({
+    get_sign_up_info: function() {
+        $("<div id='sign-up-overlay'/>").prependTo("#content");
+
+        var element = document.getElementById('sign-up-overlay');
+
+        React.render(
+            <SignupForm user={this.props.user} time={this.props.time}
+                period={this.props.period} date={this.props.date}
+                element={element} />,
+            element
+        )
+    },
+
     render: function() {
         return (
             <tr>
                 <td>{this.props.time}</td>
-                <td>{this.props.period}</td>
+                <td>
+                    {this.props.period}
+                    <i className="sign-up-button glyphicon glyphicon-pencil pull-right"
+                        onClick={this.get_sign_up_info}></i>
+                </td>
             </tr>
         );
     }
@@ -12,11 +67,14 @@ var Period = React.createClass({
 
 var PeriodList = React.createClass({
     render: function() {
-        var schedule = this.props.schedule || [];
+        var schedule = this.props.schedule || [],
+            user = this.props.user,
+            date = this.props.date;
 
         schedule = schedule.map(function(period) {
             return (
-                <Period time={period[0]} period={period[1]} />
+                <Period time={period[0]} period={period[1]}
+                    user={user} date={date} />
             );
         });
 
@@ -119,7 +177,8 @@ var DaySchedule = React.createClass({
     render: function () {
         return (
             <div>
-                <PeriodList schedule={this.state.schedule} />
+                <PeriodList schedule={this.state.schedule} date={this.state.date}
+                    user={this.state.user} />
 
                 <br/>
 

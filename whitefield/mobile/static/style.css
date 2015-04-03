@@ -25,3 +25,22 @@ form.dropdown-menu {
 .nav {
     text-align: center;
 }
+
+
+/*
+ *  Auth user
+ */
+
+.sign-up-button {
+    color: #ddd;
+
+    -webkit-transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -ms-transition: color 0.5s;
+    -o-transition: color 0.5s;
+    transition: color 0.5s;
+}
+
+.sign-up-button:hover {
+    color: #333;
+}
