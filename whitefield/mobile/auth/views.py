@@ -2,9 +2,9 @@ from pyramid.response import Response
 from pyramid.security import remember, forget, Authenticated
 from pyramid.view import view_config
 
-from .. import auth
-from ..mobile.views import schedule as anonymous_schedule
-from .model import User, DBSession
+from whitefield import auth
+from whitefield.mobile.views import schedule as anonymous_schedule
+from whitefield.auth.model import User, DBSession
 
 
 @view_config(route_name='login', renderer='json')
