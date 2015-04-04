@@ -4,7 +4,7 @@ var SignupForm = React.createClass({
             <div className="sign-up-form">
                 <form method="post" action="/1/auth/users">
                     <div id="legend">
-                        <legend>Sign up for extra time</legend>
+                        <legend>AEC Exam Sign Up</legend>
                     </div>
                     <div className="form-group">
                         <label>Time</label>
@@ -43,7 +43,7 @@ var Period = React.createClass({
     render: function() {
         var sign_up;
 
-        if (this.props.user) {
+        if (this.props.user && this.props.available_for_sign_up) {
             sign_up = (
                 <i className="sign-up-button glyphicon glyphicon-pencil pull-right"
                         onClick={this.do_sign_up}></i>
@@ -69,9 +69,13 @@ var PeriodList = React.createClass({
             props = this.props;
 
         schedule = schedule.map(function(period) {
+            var allow_sign_up = props.available_for_sign_up
+                                     .indexOf(period[1]) >= 0;
+
             return (
                 <Period time={period[0]} period={period[1]}
-                    user={props.user} do_sign_up={props.do_sign_up} />
+                    user={props.user} available_for_sign_up={allow_sign_up}
+                    do_sign_up={props.do_sign_up} />
             );
         });
 
@@ -189,7 +193,8 @@ var DaySchedule = React.createClass({
             return (
                 <div>
                     <PeriodList schedule={this.state.schedule} date={this.state.date}
-                        user={this.state.user} do_sign_up={this.sign_up_for} />
+                        user={this.state.user} do_sign_up={this.sign_up_for}
+                        available_for_sign_up={this.state.available_for_sign_up} />
 
                     <br/>
 

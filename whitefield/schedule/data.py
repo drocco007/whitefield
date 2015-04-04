@@ -1,3 +1,6 @@
+from . import parse_date
+
+
 """
 Encode a string date to a (day code, modifier) pair, either of which
 may be empty.
@@ -991,9 +994,6 @@ specials["us"] = {
                    ("2:15-3:00", "7th Period"),]
 }
 
-
-from . import parse_date
-
 day_code = day_code_ay2009_2010.copy()
 day_code.update(day_code_ay2010_2011)
 day_code.update(day_code_ay2011_2012)
@@ -1005,6 +1005,9 @@ day_code = dict(zip(map(parse_date, day_code.keys()), day_code.values()))
 for school in specials.keys():
     specials[school] = dict(zip(map(parse_date, specials[school].keys()),
                                 specials[school].values()))
+
+
+available_for_sign_up = ['1', '2', '3', '4', '5', '6', '7']
 
 
 def lookup_day_code(for_date):

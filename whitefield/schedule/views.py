@@ -1,4 +1,5 @@
 from whitefield.schedule import DaySchedule
+from whitefield.schedule.data import available_for_sign_up
 
 
 def json_schedule(date_string, school=None):
@@ -15,4 +16,5 @@ def json_schedule(date_string, school=None):
         'day_after': schedule.day_after,
         'periods': schedule.periods,
         'schedule': schedule.schedule,
+        'available_for_sign_up': available_for_sign_up,
     }

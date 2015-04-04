@@ -103,11 +103,16 @@ class DaySchedule(object):
         return self.date + ONE_DAY
 
     def _label(self, period):
-        if isinstance(period[1], int):
-            period = (period[0], str(self.periods[period[1]]))
+        time, event = period
 
-        self.period_times[period[1]] = period[0]
-        return period
+        try:
+            event = str(self.periods[event])
+        except TypeError:
+            pass
+
+        self.period_times[event] = time
+
+        return time, event
 
     def __str__(self):
         if not self.day_type:
