@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pyramid.response import Response
 from pyramid.security import remember, forget, Authenticated
 from pyramid.view import view_config
@@ -12,6 +14,9 @@ def login(request):
     try:
         user = User.by_email(request.params['email'], DBSession)
         assert user.check_password(request.params['password'])
+
+        user.last_login_date = datetime.now()
+
         headers = remember(request, user.id)
         return Response("YOU LOGGED IN!", headers=headers)
     except:
