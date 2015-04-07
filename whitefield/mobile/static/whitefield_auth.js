@@ -96,6 +96,7 @@ var NavBar = React.createClass({
             url: '/1/auth/users/current',
             dataType: 'json',
             success: function (data) {
+                this.props.onUserEvent(data);
                 this.replaceState(data);
             }.bind(this),
             error: function (xhr, status, err) {
@@ -122,6 +123,6 @@ var NavBar = React.createClass({
 
 
 React.render(
-    <NavBar />,
+    <NavBar onUserEvent={day_schedule.update_user} />,
     document.getElementById('navbar')
 );

@@ -181,6 +181,15 @@ var DaySchedule = React.createClass({
         });
     },
 
+    update_user: function(user) {
+        if ($.isEmptyObject(user))
+            user = null;
+
+        this.setState({
+            user: user
+        });
+    },
+
     render: function () {
         if (this.state.sign_up_for) {
             return (
@@ -215,7 +224,7 @@ var DaySchedule = React.createClass({
 });
 
 
-React.render(
+day_schedule = React.render(
     <DaySchedule url={"/1/schedule/" + $(location).attr('hash').slice(1)}
         school={$.url.param('school') || 'us'} />,
     document.getElementById('content')
