@@ -95,10 +95,7 @@ var NavBar = React.createClass({
         $.ajax({
             url: '/1/auth/users/current',
             dataType: 'json',
-            success: function (data) {
-                this.props.onUserEvent(data);
-                this.replaceState(data);
-            }.bind(this),
+            success: this.set_user_data,
             error: function (xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
@@ -109,13 +106,19 @@ var NavBar = React.createClass({
         this.loadUser();
     },
 
+    set_user_data: function(data) {
+        data = data || {};
+        this.props.onUserEvent(data);
+        this.replaceState(data);
+    },
+
     render: function() {
         return (
             <ul className="nav navbar-nav navbar-right">
                 <ProfileControl full_name={this.state.full_name}
                     school={this.state.school} />
                 <SignInOutControl full_name={this.state.full_name}
-                    onLogin={this.loadUser} onLogout={this.loadUser} />
+                    onLogin={this.loadUser} onLogout={this.set_user_data} />
             </ul>
         );
     }
