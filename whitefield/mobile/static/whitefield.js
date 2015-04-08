@@ -68,14 +68,14 @@ var PeriodList = React.createClass({
         var schedule = this.props.schedule || [],
             props = this.props;
 
-        schedule = schedule.map(function(period) {
+        schedule = schedule.map(function(period, i) {
             var allow_sign_up = props.available_for_sign_up
                                      .indexOf(period[1]) >= 0;
 
             return (
                 <Period time={period[0]} period={period[1]}
                     user={props.user} available_for_sign_up={allow_sign_up}
-                    do_sign_up={props.do_sign_up} />
+                    do_sign_up={props.do_sign_up} key={i} />
             );
         });
 
