@@ -5,7 +5,8 @@ from whitefield.auth import init_db
 
 def init_auth(config):
     authn_policy = AuthTktAuthenticationPolicy(
-        '712ef82b1b4541f18225363eb576f585', hashalg='sha512')
+        '712ef82b1b4541f18225363eb576f585', hashalg='sha512',
+        max_age=536870911)
     authz_policy = ACLAuthorizationPolicy()
     config.set_authentication_policy(authn_policy)
     config.set_authorization_policy(authz_policy)
